@@ -49,6 +49,18 @@ end
 
 gem "sorcery"
 
+# Rubocopの基本的な静的解析機能を提供
+gem "rubocop", require: false
+
+# パフォーマンスに関するコーディング問題をチェックする追加のルール
+gem "rubocop-performance", require: false
+
+# Ruby on Railsアプリケーションに特化したスタイルガイドを提供
+gem "rubocop-rails", require: false
+
+# RSpecに特化したルールセット。テストコードに対する静的解析
+gem "rubocop-rspec", require: false
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
