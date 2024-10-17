@@ -1,0 +1,43 @@
+ja:
+  links:
+    contact: "お問い合わせ先"  # お問い合わせ先リンク
+    terms: "利用規約"  # 利用規約リンク
+    privacy_policy: "プライバシーポリシー"  # プライバシーポリシーリンク
+    cafe_book: "Cafe-book"  # ヘッダーのロゴリンク
+    login: "ログイン"  # ログインリンク
+    menu: "メニュー"  # メニューのタイトル
+    find_by_list: "一覧で探す"  # 一覧で探すリンク
+    find_by_map: "マップで探す"  # マップで探すリンク
+    login_page: "ログインページへ"  # ログインページへのリンクテキスト
+    register_page: "登録ページへ"  # 登録ページへのリンクテキスト
+    logout: "ログアウト"  # ログアウトリンク
+    logout_confirm: "ログアウトしてもよろしいですか？"  # ログアウト確認メッセージ
+    my_page: "マイページ"  # マイページへのリンク
+    find_by_map: "マップから探す"  # マップから探すリンク
+    register_page: "新規登録"  # 新規登録リンク
+
+  helpers:
+    submit:
+      user: "登録する"  # ユーザー登録ボタンのテキスト
+      login: "ログイン"  # ログインボタンのテキスト
+      edit: "編集する"  # 編集ボタンのテキスト
+      update: "更新する"  # 更新ボタンのテキスト
+      edit: "編集"  # 編集ボタンのテキスト
+
+  activerecord:
+    attributes:
+      user:
+        name: "名前"  # 名前フィールドのラベル
+        email: "メールアドレス"  # メールアドレスフィールドのラベル
+        avatar: "プロフィール画像"  # プロフィール画像のラベル
+        password: "パスワード"  # パスワードフィールドのラベル
+        password_confirmation: "パスワード確認"  # パスワード確認フィールドのラベル
+
+  titles:
+    user_registration: "ユーザー登録"
+    login: "ログイン"
+    user_login: "ユーザーログイン"
+    my_page: "マイページ"
+
+  footer:
+    copyright: "© 2024 - cafe-book"

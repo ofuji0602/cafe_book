@@ -1,21 +1,25 @@
 <div class='container mx-auto'>
   <div class='text-center mt-4'>
-    <h1 class='text-lg font-semibold'>ユーザー登録</h1>
+    <h1 class='text-lg font-semibold'><%= t('titles.user_registration') %></h1>
   </div>
   <%= form_with model: @user do |f| %>
-  <%= f.label :name,'お名前', class: 'label w-full md:w-1/2 mx-auto'%>
-  <%= f.text_field :name, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
-  <%= f.label :email, 'メールアドレス', class: 'label w-full md:w-1/2 mx-auto' %>
-  <%= f.email_field :email, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
-  <%= f.label :password, 'パスワード', class: 'label w-full md:w-1/2 mx-auto'%>
-  <%= f.password_field :password, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
-  <%= f.label :password_confirmation, 'パスワード確認',class: 'label w-full md:w-1/2 mx-auto'%>
-  <%= f.password_field :password_confirmation, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
-  <div class='mx-auto md:w-1/2'>
-      <%= f.submit '登録', class: 'btn btn-primary w-full mt-6 mb-6 mx-auto' %>
-  </div>
+    <%= f.label :name, class: 'label w-full md:w-1/2 mx-auto' %>
+    <%= f.text_field :name, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
+
+    <%= f.label :email, class: 'label w-full md:w-1/2 mx-auto' %>
+    <%= f.email_field :email, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
+
+    <%= f.label :password, class: 'label w-full md:w-1/2 mx-auto' %>
+    <%= f.password_field :password, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
+
+    <%= f.label :password_confirmation, class: 'label w-full md:w-1/2 mx-auto' %>
+    <%= f.password_field :password_confirmation, class: 'input input-bordered form-control mb-4 w-full md:w-1/2 mx-auto' %>
+
+    <div class='mx-auto md:w-1/2'>
+      <%= f.submit t('helpers.submit.user'), class: 'btn btn-primary w-full mt-6 mb-6 mx-auto' %>
+    </div>
   <% end %>
-  <div class= 'text-center mb-6'>
-    <%= link_to 'ログインページへ', login_path %>
+  <div class='text-center mb-6'>
+    <%= link_to t('links.login'), login_path %>
   </div>
 </div>

@@ -53,6 +53,8 @@ gem "carrierwave"
 
 gem "mini_magick"
 
+gem "rails-i18n", "~> 7.0.0"
+
 # Rubocopの基本的な静的解析機能を提供
 gem "rubocop", require: false
 

@@ -1,10 +1,10 @@
 <footer class="footer footer-center bg-base-300 text-base-content p-4">
   <nav class="grid grid-flow-col gap-4">
-    <%= link_to "お問い合わせ先", "#", class: "link link-hover" %>
-    <%= link_to "利用規約", term_path, class: "link link-hover" %>
-    <%= link_to "プライバシーポリシー", policy_path, class: "link link-hover" %>
+    <%= link_to t('links.contact'), "#", class: "link link-hover" %>
+    <%= link_to t('links.terms'), term_path, class: "link link-hover" %>
+    <%= link_to t('links.privacy_policy'), policy_path, class: "link link-hover" %>
   </nav>
   <aside>
-    <p>© 2024 - cafe-book</p>
+    <p><%= t('footer.copyright') %></p>
   </aside>
 </footer>
