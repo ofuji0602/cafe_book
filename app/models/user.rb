@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  mount_uploader :avatar, AvatarUploader
 
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] } # スワードの長さが6文字以上であることを要求。
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] } # 確認用パスワード（password_confirmation）と一致することを要求。

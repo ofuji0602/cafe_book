@@ -1,0 +1,31 @@
+<div class="container mx-auto mb-20">
+  <div class="px-5 border-opacity-50">
+    <div class="grid place-items-center">
+      <h1 class='text-lg font-semibold my-6'>マイページ</h1>
+    </div>
+    <div class="grid place-items-center">
+      <%= form_with model: @user, url: my_page_path, method: :patch, class: 'w-full px-5 md:w-3/5 md:px-0', local: true do |f| %>
+        <!-- 名前フィールド -->
+        <div class="form-control w-full md:w-1/2 mx-auto mt-5">
+          <%= f.label :name, class: 'label-text text-sm mb-1' %>
+          <%= f.text_field :name, class: 'input input-bordered w-full mx-auto' %>
+        </div>
+        <!-- メールフィールド -->
+        <div class="form-control w-full md:w-1/2 mx-auto mt-5">
+          <%= f.label :email, class: 'label-text text-sm mb-1' %>
+          <%= f.email_field :email, class: 'input input-bordered w-full mx-auto' %>
+        </div> 
+        <!-- アバターフィールド -->
+        <div class="form-control w-full md:w-1/2 mx-auto mt-5">
+          <%= f.label :avatar, class: 'label-text text-sm  mb-1' %>
+          <%= f.file_field :avatar, id: 'post-images-input', class: 'file-input file-input-bordered file-input-accent w-full' %>
+        </div>     
+        <!-- 送信ボタン -->
+        <div class="actions w-full md:w-1/2 mx-auto mt-10 flex justify-center">
+          <%= f.submit '編集する', class: 'btn bg-gray-300 w-full rounded-lg text-sm flex items-center justify-center px-5 hover:bg-gray-400 active:bg-gray-500' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
