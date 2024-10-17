@@ -49,6 +49,10 @@ end
 
 gem "sorcery"
 
+gem "carrierwave"
+
+gem "mini_magick"
+
 # Rubocopの基本的な静的解析機能を提供
 gem "rubocop", require: false
 
