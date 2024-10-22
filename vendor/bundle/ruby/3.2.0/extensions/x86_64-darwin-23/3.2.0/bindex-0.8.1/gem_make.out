@@ -1,0 +1,19 @@
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/fujiiryousuke/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-inro3l sitelibdir\=./.gem.20241022-92486-inro3l clean
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-inro3l sitelibdir\=./.gem.20241022-92486-inro3l
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-inro3l sitelibdir\=./.gem.20241022-92486-inro3l install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20241022-92486-inro3l/skiptrace/internal
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-inro3l sitelibdir\=./.gem.20241022-92486-inro3l clean

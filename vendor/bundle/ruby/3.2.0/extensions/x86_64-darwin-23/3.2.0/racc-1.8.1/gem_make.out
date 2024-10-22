@@ -1,0 +1,19 @@
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+/Users/fujiiryousuke/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-eys4h7 sitelibdir\=./.gem.20241022-92486-eys4h7 clean
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-eys4h7 sitelibdir\=./.gem.20241022-92486-eys4h7
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-eys4h7 sitelibdir\=./.gem.20241022-92486-eys4h7 install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20241022-92486-eys4h7/racc
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-eys4h7 sitelibdir\=./.gem.20241022-92486-eys4h7 clean

@@ -1,0 +1,16 @@
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+/Users/fujiiryousuke/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-aefc42 sitelibdir\=./.gem.20241022-92486-aefc42 clean
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-aefc42 sitelibdir\=./.gem.20241022-92486-aefc42
+make: Nothing to be done for `all'.
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-aefc42 sitelibdir\=./.gem.20241022-92486-aefc42 install
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-aefc42 sitelibdir\=./.gem.20241022-92486-aefc42 clean

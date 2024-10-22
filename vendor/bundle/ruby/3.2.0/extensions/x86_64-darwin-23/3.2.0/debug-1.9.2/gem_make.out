@@ -1,0 +1,20 @@
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+/Users/fujiiryousuke/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-oqas6l sitelibdir\=./.gem.20241022-92486-oqas6l clean
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-oqas6l sitelibdir\=./.gem.20241022-92486-oqas6l
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-oqas6l sitelibdir\=./.gem.20241022-92486-oqas6l install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20241022-92486-oqas6l/debug
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-oqas6l sitelibdir\=./.gem.20241022-92486-oqas6l clean

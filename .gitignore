@@ -38,3 +38,6 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Ignore vendor bundle
+/vendor/bundle/ruby/3.2.0/*

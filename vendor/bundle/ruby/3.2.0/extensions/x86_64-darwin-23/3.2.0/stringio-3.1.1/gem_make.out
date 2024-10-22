@@ -1,0 +1,19 @@
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.1/ext/stringio
+/Users/fujiiryousuke/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-8o6kv2 sitelibdir\=./.gem.20241022-92486-8o6kv2 clean
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-8o6kv2 sitelibdir\=./.gem.20241022-92486-8o6kv2
+compiling stringio.c
+linking shared-object stringio.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-8o6kv2 sitelibdir\=./.gem.20241022-92486-8o6kv2 install
+/usr/bin/install -c -m 0755 stringio.bundle ./.gem.20241022-92486-8o6kv2
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-8o6kv2 sitelibdir\=./.gem.20241022-92486-8o6kv2 clean

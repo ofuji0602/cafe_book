@@ -1,0 +1,28 @@
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+/Users/fujiiryousuke/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+checking for rb_io_path()... no
+checking for rb_io_descriptor()... yes
+checking for rb_io_get_write_io()... yes
+checking for rb_io_closed_p()... no
+checking for rb_io_open_descriptor()... no
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+creating Makefile
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-upuf0b sitelibdir\=./.gem.20241022-92486-upuf0b clean
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-upuf0b sitelibdir\=./.gem.20241022-92486-upuf0b
+compiling console.c
+linking shared-object io/console.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-upuf0b sitelibdir\=./.gem.20241022-92486-upuf0b install
+/usr/bin/install -c -m 0755 console.bundle ./.gem.20241022-92486-upuf0b/io
+
+current directory: /Users/fujiiryousuke/cafe_book/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20241022-92486-upuf0b sitelibdir\=./.gem.20241022-92486-upuf0b clean
