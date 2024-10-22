@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true # メールアドレスが他のユーザーと重複しないようにする。
   validates :name, presence: true, length: { maximum: 255 } # name要素を入力必須、255文字まで。
+
+  enum role: { general: 0, admin: 1 }
 end

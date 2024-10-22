@@ -55,6 +55,14 @@ gem "mini_magick"
 
 gem "rails-i18n", "~> 7.0.0"
 
+gem "rails_admin"
+
+gem "sassc-rails"
+
+gem "cancancan"
+
+gem "enum_help"
+
 # Rubocopの基本的な静的解析機能を提供
 gem "rubocop", require: false
 
@@ -77,3 +85,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "sassc-rails"

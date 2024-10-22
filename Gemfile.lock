@@ -50,6 +50,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.2.1)
       activesupport (= 7.2.1)
+    activemodel-serializers-xml (1.0.3)
+      activemodel (>= 5.0.0.a)
+      activesupport (>= 5.0.0.a)
+      builder (~> 3.1)
     activerecord (7.2.1)
       activemodel (= 7.2.1)
       activesupport (= 7.2.1)
@@ -83,6 +87,7 @@ GEM
     brakeman (6.2.1)
       racc
     builder (3.3.0)
+    cancancan (3.6.1)
     capybara (3.40.0)
       addressable
       matrix
@@ -104,11 +109,14 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.1)
       railties (>= 6.0.0)
+    csv (3.3.0)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.1)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.13.0)
     faraday (2.12.0)
       faraday-net_http (>= 2.0, < 3.4)
@@ -142,6 +150,18 @@ GEM
     json (2.7.2)
     jwt (2.9.3)
       base64
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
     logger (1.6.1)
     loofah (2.22.0)
@@ -160,6 +180,7 @@ GEM
     msgpack (1.7.2)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
+    nested_form (0.3.2)
     net-http (0.4.1)
       uri
     net-imap (0.4.16)
@@ -240,6 +261,13 @@ GEM
     rails-i18n (7.0.9)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+    rails_admin (3.2.1)
+      activemodel-serializers-xml (>= 1.0)
+      csv
+      kaminari (>= 0.14, < 2.0)
+      nested_form (~> 0.3)
+      rails (>= 6.0, < 8)
+      turbo-rails (>= 1.0, < 3)
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -291,6 +319,14 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     securerandom (0.3.1)
     selenium-webdriver (4.25.0)
       base64 (~> 0.2)
@@ -317,6 +353,7 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.1)
     thor (1.3.2)
+    tilt (2.4.0)
     timeout (0.4.1)
     turbo-rails (2.0.10)
       actionpack (>= 6.0.0)
@@ -352,10 +389,12 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  cancancan
   capybara
   carrierwave
   cssbundling-rails
   debug
+  enum_help
   jbuilder
   jsbundling-rails
   mini_magick
@@ -363,11 +402,13 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.2.1)
   rails-i18n (~> 7.0.0)
+  rails_admin
   rubocop
   rubocop-performance
   rubocop-rails
   rubocop-rails-omakase
   rubocop-rspec
+  sassc-rails
   selenium-webdriver
   sorcery
   sprockets-rails

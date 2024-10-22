@@ -41,3 +41,10 @@ ja:
 
   footer:
     copyright: "© 2024 - cafe-book"
+
+  enums:
+    user:
+      role:
+        general: "一般"
+        admin: "管理者"
+
