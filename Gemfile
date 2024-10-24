@@ -63,6 +63,10 @@ gem "cancancan"
 
 gem "enum_help"
 
+gem "dotenv-rails"
+
+gem "google_places"
+
 # Rubocopの基本的な静的解析機能を提供
 gem "rubocop", require: false
 
@@ -85,4 +89,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem "sassc-rails"
+
+

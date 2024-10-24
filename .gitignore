@@ -8,8 +8,11 @@
 /.bundle
 
 # Ignore all environment files (except templates).
-/.env*
-!/.env*.erb
+/.env
+/.env.*       # Ignore any other environment files (e.g. .env.production, .env.development)
+/.env.local   # Ignore .env.local specifically
+!/.env.example # Keep .env.example for reference
+!/.env*.erb   # Keep any .env.erb template files
 
 # Ignore all logfiles and tempfiles.
 /log/*
