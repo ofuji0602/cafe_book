@@ -1,0 +1,23 @@
+<div class="grid place-items-center">
+  <div class="card w-4/5 bg-base-100 shadow-md z-0 rounded my-20">
+    <div class="card-body pt-20">
+      <h1 class="text-2xl underline pl-10 font-bold"><%= @shop.name %></h1>
+      <p class="pl-10 mt-4 text-lg">住所：<%= @shop.address %></p>
+      <div class="flex flex-wrap">
+        <p class="pl-10 mt-4 text-base">営業時間：
+          <p class="mt-4 text-base">
+            <%= raw @shop.opening_hours.gsub("\n", '<br>') %>
+          </p>
+        </p>
+      </div>
+      <p class="pl-10 mt-2 text-lg">公式サイト：<span class="text-blue-500"><%= link_to "#{@shop.web_site.chomp('/')}", @shop.web_site.chomp('/') %></span></p>
+      <p class="pl-10 mt-2 text-lg">電話番号：<%= @shop.phone_number %></p>
+      <p class="pl-10 mt-2 text-lg">ギャラリー</p>
+      <div class="flex justify-center">
+        <% @shop_images.each do |shop_image| %>
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=150&maxwidth=150&photo_reference=<%= shop_image.image %>&key=<%= ENV['API_KEY'] %>" class="mx-2">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

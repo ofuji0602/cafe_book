@@ -58,7 +58,7 @@ window.initMap = function() {
 
   // マップをドラッグした時の動作
   map.addListener("dragend", function() {
-    var newPinCenter = pin.setPosition(map.getCenter());
+    pin.setPosition(map.getCenter());
     circle.setCenter(map.getCenter());
 
     var circleCenter = circle.getCenter();
@@ -81,7 +81,7 @@ window.initMap = function() {
         addMarkers(data.cafes, "Cafe");
 
         const booksListElement = document.getElementById("books-list");
-        
+
         // 以前の内容をクリア
         if (booksListElement) {
           booksListElement.innerHTML = ""; // innerHTMLをクリアする
@@ -96,13 +96,13 @@ window.initMap = function() {
 
             const shopCard = document.createElement("div");
             shopCard.className = "card bg-base-200 border-gray-500 shadow-xl m-5 w-800";
-      
+
             const cardContent = `
               <div class="flex">
                 <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photo_reference=${book_image.image}&key=${API_KEY}" class="p-5 w-48 h-48 object-cover" style="width: 200px; height: 140px;">
                 <div class="flex-col">
                   <ul>
-                    <li class="text-lg">${shop.name}</li>
+                    <li class="text-lg mt-4 underline font-bold"><a href="/shops/${shop.id}">${shop.name}</a></li>
                     <li class="text-base">${shop.address}</li>
                     <li class="text-xs">${shop.phone_number}</li>
                   </ul>
@@ -135,12 +135,13 @@ window.initMap = function() {
             const cafe_image = shop.shop_images[0]; // 修正点：cafe_imageを取得
             const shopCard = document.createElement("div");
             shopCard.className = "card bg-base-200 border-gray-500 shadow-xl m-5 w-800";
+
             const cardContent = `
               <div class="flex">
                 <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photo_reference=${cafe_image.image}&key=${API_KEY}" class="p-5 w-48 h-48 object-cover" style="width: 200px; height: 140px;">
                 <div class="flex-col">
                   <ul>
-                    <li class="text-lg">${shop.name}</li>
+                    <li class="text-lg underline font-bold mt-4"><a href="/shops/${shop.id}">${shop.name}</a></li>
                     <li class="text-base">${shop.address}</li>
                     <li class="text-xs">${shop.phone_number}</li>
                   </ul>
