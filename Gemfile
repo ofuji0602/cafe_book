@@ -67,6 +67,10 @@ gem "dotenv-rails"
 
 gem "google_places"
 
+gem "gon"
+
+gem "pry-rails"
+
 # Rubocopの基本的な静的解析機能を提供
 gem "rubocop", require: false
 
