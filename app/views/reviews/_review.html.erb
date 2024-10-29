@@ -1,0 +1,38 @@
+<%= turbo_frame_tag review do %>
+  <!-- Turboフレームを作成し、レビューの内容を表示するための領域を設定します -->
+  <div class="border-b border-gray-400 py-5 mx-5 rounded">
+    <!-- 下部にボーダーを付け、上下に余白を設定し、左右のマージンを追加 -->
+    <div class="flex mx-2 items-center">
+      <!-- Flexboxを使用して、アイテムを横並びに配置 -->
+      <div class="ml-2 text-sm flex flex-col">
+        <!-- ユーザー名と作成日時を表示するための縦並びの領域 -->
+        <p><%= review.user.name %></p>
+        <!-- レビューを投稿したユーザーの名前を表示 -->
+        <p class="text-gray-500"><%= l review.created_at, format: :simple %></p>
+        <!-- レビューの作成日時をロケールに基づいてフォーマットして表示 -->
+        <div class="flex items-center mb-2">
+          <!-- アイコンと評価を横並びに配置 -->
+          <i class="fa-solid fa-star text-yellow-500 mr-2"></i>
+          <!-- 星アイコンを表示 -->
+          <p class="text-sm"><%= review.rating_as_number %></p>
+          <!-- レビューの評価を表示 -->
+        </div>
+      </div>
+      <% if current_user.own?(review) %>
+        <!-- 現在のユーザーがこのレビューの所有者である場合 -->
+        <div class="ml-auto">
+          <%= render 'reviews/crud_menus', review: review %>
+          <!-- CRUDメニュー（作成、読み取り、更新、削除のオプション）を表示 -->
+        </div>
+      <% end %>
+    </div>
+    <div class="flex flex-col mt-1.5 mb-1.5 p-2 mx-2 border rounded-lg border-gray-300">
+      <!-- 評価とレビュー内容を表示するためのボックス。上下のマージン、内側の余白、境界線を設定 -->
+      
+      <div class="max-w-full max-h-48 min-h-48 p-2">
+        <p class="text-sm"><%= review.content %></p>
+      </div>
+      <!-- 実際のレビューの内容を表示 -->
+    </div>
+  </div>
+<% end %>

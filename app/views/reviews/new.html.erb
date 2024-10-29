@@ -1,0 +1,20 @@
+<%= turbo_frame_tag 'review_modal' do %>
+  <div class="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-50" data-controller="review-modal" data-review-modal-target="reviewModal">
+    <div class="modal-content bg-white rounded shadow-lg p-10 w-[90%] md:w-[600px]"> <!-- モーダルの幅を拡大 -->
+      <%= form_with model: @review, url: shop_reviews_path(@shop), data: { action: "turbo:submit-end->review-modal#close" }, method: :post do |f| %>
+        
+        <div class="max-w-lg mx-auto p-2 md:p-6 bg-white rounded space-y-2 md:space-y-4">
+          <%= f.label :rating, class: 'block font-medium text-sm text-gray-700' %>
+          <%= f.select :rating, Review.ratings.invert, class: 'rounded-xl p-2 border border-gray-300' %>
+
+          <div class="form-control">
+            <%= f.label :content, class: 'block font-medium text-sm text-gray-700' %>
+            <%= f.text_area :content, rows: 6, class: 'w-full rounded p-2 border border-gray-300 h-[200px]' %> <!-- コメントエリアの高さを増やす -->
+          </div>
+          
+          <%= f.submit '投稿する', class: 'w-full py-2 px-4 bg-gray-300 text-white rounded hover:bg-gray-400 focus:outline-none active:bg-gray-500' %> <!-- ボタンの色と形を統一 -->
+        </div>
+      <% end %>      
+    </div>
+  </div>
+<% end %>
