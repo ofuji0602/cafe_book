@@ -48,3 +48,6 @@ ja:
         general: "一般"
         admin: "管理者"
 
+  time:
+    formats:
+      simple: "%Y/%m/%d %H:%M"  # シンプルな日付フォーマット（例: 2024/10/27 14:30）

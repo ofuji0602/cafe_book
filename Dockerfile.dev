@@ -1,6 +1,7 @@
 FROM ruby:3.2.3
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
+
 RUN apt-get update -qq \
 && apt-get install -y ca-certificates curl gnupg \
 && mkdir -p /etc/apt/keyrings \
@@ -10,7 +11,22 @@ RUN apt-get update -qq \
 && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn vim
+
 RUN mkdir /myapp
 WORKDIR /myapp
+
 RUN gem install bundler
+
 COPY . /myapp
+
+# Install the gems specified in the Gemfile
+RUN bundle install
+
+# Install yarn dependencies
+RUN yarn install
+
+# Precompile assets if necessary
+RUN bundle exec rake assets:precompile
+
+# If you have a Procfile or specific command to run
+CMD ["rails", "server", "-b", "0.0.0.0"]

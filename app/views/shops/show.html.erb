@@ -4,10 +4,9 @@
       <h1 class="text-2xl underline pl-10 font-bold"><%= @shop.name %></h1>
       <p class="pl-10 mt-4 text-lg">住所：<%= @shop.address %></p>
       <div class="flex flex-wrap">
-        <p class="pl-10 mt-4 text-base">営業時間：
-          <p class="mt-4 text-base">
-            <%= raw @shop.opening_hours.gsub("\n", '<br>') %>
-          </p>
+        <p class="pl-10 mt-4 text-base">営業時間：</p>
+        <p class="mt-4 text-base">
+          <%= raw @shop.opening_hours.gsub("\n", '<br>') %>
         </p>
       </div>
       <p class="pl-10 mt-2 text-lg">公式サイト：<span class="text-blue-500"><%= link_to "#{@shop.web_site.chomp('/')}", @shop.web_site.chomp('/') %></span></p>
@@ -17,6 +16,23 @@
         <% @shop_images.each do |shop_image| %>
           <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=150&maxwidth=150&photo_reference=<%= shop_image.image %>&key=<%= ENV['API_KEY'] %>" class="mx-2">
         <% end %>
+      </div>
+      <div class="card-body p-10 rounded">
+        <div class="flex justify-center items-center h-full">
+          <div class="card w-full bg-base-200 shadow-xl rounded">
+            <p class="pl-10 py-4 md:py-7 text-sm md:text-lg text-center font-bold">レビュー</p>
+            <div id="reviews">
+              <%= turbo_frame_tag 'review_modal' do %>
+                <%= render @reviews %>
+              <% end %>
+            </div>
+            <% if logged_in? %>
+            <div class="flex justify-end mx-5 mt-5 md:mt-10 mb-5">
+              <%= link_to 'レビューを書く', new_shop_review_path(@shop), class: 'btn btn-sm md:btn-md bg-gray-300 w-full text-white rounded ext-sm hover:bg-gray-400 active:bg-gray-500', data: { turbo_frame: 'review_modal' } %>
+            </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
