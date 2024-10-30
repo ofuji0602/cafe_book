@@ -4,7 +4,7 @@ var pin; // ユーザーがドラッグできるピン
 var circle; // 検索範囲を示す円
 var lat = gon.latitude; // 初期の緯度
 var lng = gon.longitude; // 初期の経度
-var clothesMarker = []; // 服屋のマーカーを保持する配列
+var booksMarker = []; // 本屋のマーカーを保持する配列
 var cafesMarker = []; // カフェのマーカーを保持する配列
 var API_KEY = gon.api_key; // Google Maps APIキー
 
@@ -158,35 +158,36 @@ function updateShopList(type, shops) {
 
 // マーカーを追加する関数
 function addMarkers(shops, type) {
-    // タイプに応じたマーカー配列を選択
-    const markers = (type === 'books') ? clothesMarker : cafesMarker;
+  // タイプに応じたマーカー配列を選択
+  const markers = (type === 'books') ? booksMarker : cafesMarker;
 
-    // ショップの数だけマーカーを追加
-    for (var i = 0; i < shops.length && i < maxMarkers; i++) {
-        var markerIcon = {
-            url: '/assets/' + type.toLowerCase() + '_' + (i + 1) + '.png', // アイコンのパスを設定
-            scaledSize: new google.maps.Size(70, 70) // アイコンのサイズを指定
-        };
+  // ショップの数だけマーカーを追加
+  for (var i = 0; i < shops.length && i < maxMarkers; i++) {
+      var markerIcon = {
+          url: '/images/' + type.toLowerCase() + '_' + (i + 1) + '.png', // アイコンのパスを設定
+          scaledSize: new google.maps.Size(70, 70) // アイコンのサイズを指定
+      };
 
-        // マーカーを作成
-        var marker = new google.maps.Marker({
-            map: map, // マップに追加
-            position: new google.maps.LatLng(shops[i].latitude, shops[i].longitude), // マーカーの位置
-            icon: markerIcon // マーカーのアイコン
-        });
+      // マーカーを作成
+      var marker = new google.maps.Marker({
+          map: map, // マップに追加
+          position: new google.maps.LatLng(shops[i].latitude, shops[i].longitude), // マーカーの位置
+          icon: markerIcon // マーカーのアイコン
+      });
 
-        markers.push(marker); // マーカーを配列に追加
-    }
+      markers.push(marker); // マーカーを配列に追加
+  }
 }
+
 
 // 以前のマーカーをクリアする関数
 function clearMarkers() {
-    // 服屋のマーカーを地図から削除
-    clothesMarker.forEach(marker => marker.setMap(null));
+    // 本屋のマーカーを地図から削除
+    booksMarker.forEach(marker => marker.setMap(null));
     // カフェのマーカーを地図から削除
     cafesMarker.forEach(marker => marker.setMap(null));
     // マーカーの配列を空にする
-    clothesMarker = [];
+    booksMarker = [];
     cafesMarker = [];
 }
 
