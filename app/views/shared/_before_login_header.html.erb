@@ -7,6 +7,7 @@
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
+        
         <li>
           <%= link_to t('links.login'), login_path %>
         </li>
@@ -16,8 +17,7 @@
               <%= t('links.menu') %>
             </summary>
               <ul class="absolute right-1 p-2 bg-base-200 rounded-t-none z-50 w-max">
-                <li><%= link_to t('links.find_by_list'), "#", class: "mb-2" %></li>
-                <li><%= link_to t('links.find_by_map'), "#", class: "mb-2" %></li>
+                <li><%= link_to t('links.find_by_map'), home_path, class: "mb-2" %></li>
               </ul>
           </details>
         </li>

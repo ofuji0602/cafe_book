@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  
   # homeアクションは、地図の中心となるカフェと書店の情報を取得して表示するためのメソッドです。
   def home
     # 初期の緯度、経度をgonに設定し、JavaScriptからアクセスできるようにします。
@@ -14,8 +15,19 @@ class MapsController < ApplicationController
     
     # 指定された緯度経度の範囲内にあるカフェと書店の情報を取得します。
     # includesメソッドを使用して、関連するshop_imagesも事前に取得します。
-    @cafes = Cafe.includes(:shop_images).where(latitude: south..north, longitude: west..east)
+    is_books_filter = params[:is_books_filter] == 'true'
+    is_cafe_filter = params[:is_cafe_filter] == 'true'
+    
+    # デフォルトで両方の情報を取得
     @books = Book.includes(:shop_images).where(latitude: south..north, longitude: west..east)
+    @cafes = Cafe.includes(:shop_images).where(latitude: south..north, longitude: west..east)
+
+    # フィルタが指定されている場合は、それに応じて上書き
+    if params[:is_books_filter] == 'true'
+      @cafes = []  # カフェの情報は取得しない
+    elsif params[:is_cafe_filter] == 'true'
+      @books = []  # 書店の情報は取得しない
+    end
 
     # レスポンスの形式に応じて処理を行います。
     respond_to do |format|

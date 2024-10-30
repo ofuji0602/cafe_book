@@ -15,7 +15,8 @@ ja:
     my_page: "マイページ"  # マイページへのリンク
     find_by_map: "マップから探す"  # マップから探すリンク
     register_page: "新規登録"  # 新規登録リンク
-
+    search_books: "本屋のみ検索"
+    search_cafe: "カフェのみ検索"
   helpers:
     submit:
       user: "登録する"  # ユーザー登録ボタンのテキスト
