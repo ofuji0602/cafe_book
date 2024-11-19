@@ -10,13 +10,17 @@
         <p class="w-20 sm:w-24 flex-shrink-0">営業時間：</p>
         <p class="whitespace-pre-wrap"><%= raw @shop.opening_hours.gsub("\n", '<br>') %></p>
       </div>
-      <!-- 公式サイト -->
-      <p class="mt-4 text-sm lg:text-xl font-bold">
-        公式サイト：
-        <span class="text-blue-500">
-          <%= link_to @shop.web_site.chomp('/'), @shop.web_site.chomp('/') %>
-        </span>
-      </p>
+      <div class="card w-[380px] overflow-hidden">
+        <div class="card-body">
+          <!-- 公式サイト -->
+          <p class="mt-4 text-sm lg:text-xl font-bold">
+            公式サイト：
+            <span class="text-blue-500 break-words block sm:inline max-w-[300px]">
+              <%= link_to @shop.web_site.chomp('/'), @shop.web_site.chomp('/') %>
+            </span>
+          </p>
+        </div>
+      </div>
       <!-- 電話番号 -->
       <p class="mt-4 text-sm lg:text-xl">電話番号：<%= @shop.phone_number %></p>
       <!-- ギャラリー -->
