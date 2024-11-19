@@ -6,16 +6,17 @@
         
         <div class="max-w-lg mx-auto p-2 md:p-6 bg-white rounded space-y-2 md:space-y-4">
           <%= f.label :rating, class: 'block font-medium text-sm text-gray-700' %>
-          <%= f.select :rating, Review.ratings.invert, class: 'rounded-xl p-2 border border-gray-300' %>
+          <%= f.select :rating, Review.ratings.invert, class: 'rounded-xl p-2 border border-gray-300 focus:border-gray-500' %>
+
 
           <div class="form-control">
             <%= f.label :content, class: 'block font-medium text-sm text-gray-700' %>
-            <%= f.text_area :content, rows: 6, class: 'w-full rounded p-2 border border-gray-300' %>
-
+            <%= f.text_area :content, rows: 6, class: 'w-full rounded p-2 border border-gray-300 focus:outline-none' %>
           </div>
           
+          
           <%= f.submit '更新する', class: 'w-full py-2 px-4  bg-gray-300 text-white rounded hover:bg-gray-400 active:bg-gray-500 focus:outline-none' %>
-          <button class="w-full py-2 px-4 bg-gray-300 text-white rounded hover:bg-gray-400 focus:outline-none active:bg-gray-500 forcus:ring-gray-200" data-action="turbo:click->review-modal#close">キャンセル</button>
+          <button class="w-full py-2 px-4 bg-gray-300 text-white rounded hover:bg-gray-400 forcus:outline-none active:bg-gray-500 forcus:ring-gray-200" data-action="turbo:click->review-modal#close">キャンセル</button>
         </div>
       <% end %>      
     </div>

@@ -1,32 +1,41 @@
 <header>
   <div class="navbar bg-base-200">
     <div class="flex-1">
-      <div class="btn-ghost sm:text-base font-bold">
+      <div class="btn-ghost text-xs lg:text-base font-bold">
         <%= link_to t('links.cafe_book'), "#" %>
       </div>
     </div>
     <div class="flex-none">
-      <ul class="menu menu-horizontal px-1">
+      <ul class="menu menu-horizontal">
         <% if current_page?(home_path) %>
-          <li>
-            <button id="search-books-button" class="mx-5"><%= t('links.search_books') %></button>
-          </li>
-          <li>
-            <button id="search-cafe-button" class="mr-5"><%= t('links.search_cafe') %></button>
-          </li>
-        <% end %>
         <li>
-          <%= link_to t('links.logout'), logout_path, data: {turbo_method: :delete, turbo_confirm: t('links.logout_confirm') } %>
+          <button id="search-books-button" class="text-xs lg:text-base">
+            <%= t('links.search_books') %>
+          </button>
         </li>
+        
+        <li>
+          <button id="search-cafe-button" class="text-xs lg:text-base"><%= t('links.search_cafe') %></button>
+        </li>
+        <% end %>
+        
         <li>
           <details>
-            <summary>
+            <summary class="text-xs lg:text-base">
               <%= link_to t('links.menu') %>
             </summary>
-              <ul class="absolute right-1 p-2 bg-base-200 rounded-t-none z-50 w-max">
-                <li><%= link_to t('links.find_by_map'), home_path, class: "mb-2" %></li>
-                <li><%= link_to t('links.my_page'), my_page_path, class: "mb-2" %></li>
-              </ul>
+            <ul class="absolute right-1 p-2 bg-base-200 rounded-t-none z-50 w-max">
+              <li>
+                <%= link_to t('links.find_by_map'), home_path, class: "mb-2 text-xs lg:text-base" %>
+              </li>
+              
+              <li>
+                <%= link_to t('links.my_page'), my_page_path, class: "mb-2 text-xs lg:text-base" %>
+              </li>
+              <li>
+                <%= link_to t('links.logout'), logout_path, data: { turbo_method: :delete, turbo_confirm: t('links.logout_confirm') }, class: "mb-2 text-xs lg:text-base" %>
+              </li>
+            </ul>
           </details>
         </li>
       </ul>

@@ -2,23 +2,21 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
   <%= render 'maps/map' %>
-  <div class="card w-11/12">
-    <div class="card-body p-10">
+  <div class="card mx-auto">
+    <div class="card-body">
       <div class="flex flex-col justify-center items-center h-full">
-        <h2 class="label-text text-xl mt-5 mb-1 w-11/12 text-center font-bold">書店</h2>
-          <div id="books-list" class="w-11/12">
-            <p class="text-base mt-4 text-center" id="no-books-shops">周辺にショップが見つかりませんでした</p>
-          </div>
+        <h2 class="label-text text-xl mt-5 mb-1 text-center font-bold truncate">書店</h2>
+        <div id="books-list">
+          <p class="text-base mt-4 text-center truncate" id="no-books-shops">周辺にショップが見つかりませんでした</p>
+        </div>
       </div>
-    </div>
-    <div class="card-body p-10">
-      <div class="flex flex-col justify-center items-center h-full">
-        <h2 class="label-text text-xl mt-5 mb-1 w-11/12 text-center font-bold">カフェ</h2>
-          <div id="cafes-list" class="w-11/12 mb-5">
-            <p class="text-base mt-4 text-center">周辺にショップが見つかりませんでした</p>
-          </div>
+      <div class="flex flex-col justify-center items-center h-full mt-10">
+        <h2 class="label-text text-xl mt-5 mb-1 text-center font-bold truncate">カフェ</h2>
+        <div id="cafes-list">
+          <p class="text-base mt-4 text-center truncate" id="no-cafes-shops">周辺にショップが見つかりませんでした</p>
         </div>
       </div>
     </div>
   </div>
+  
 </div>
