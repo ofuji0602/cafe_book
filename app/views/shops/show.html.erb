@@ -1,6 +1,6 @@
 <div class="grid place-items-center">
   <div class="card w-full">
-    <div class="card-body">
+    <div class="p-4 sm:w-[380px]">
       <!-- 店名 -->
       <h1 class="text-sm lg:text-xl font-bold"><%= @shop.name %></h1>
       <!-- 住所 -->
@@ -10,8 +10,8 @@
         <p class="w-20 sm:w-24 flex-shrink-0">営業時間：</p>
         <p class="whitespace-pre-wrap"><%= raw @shop.opening_hours.gsub("\n", '<br>') %></p>
       </div>
-      <div class="card w-[380px] overflow-hidden">
-        <div class="card-body">
+      <div class="card sm:w-[380px] overflow-hidden">
+        <div class="p-0">
           <!-- 公式サイト -->
           <p class="mt-4 text-sm lg:text-xl font-bold">
             公式サイト：
@@ -34,25 +34,25 @@
           </div>
         <% end %>
       </div>
-      <!-- レビュー -->
-      <div class="mt-10">
-        <div class="card bg-base-200 shadow-xl rounded p-4 sm:p-6">
-          <p class="text-sm lg:text-xl text-center font-bold">レビュー</p>
-          <div id="reviews">
-            <%= turbo_frame_tag 'review_modal' do %>
-              <%= render @reviews %>
-            <% end %>
-          </div>
-
-          <% if logged_in? %>
-          <div class="flex justify-end mt-5">
-            <%= link_to 'レビューを書く', 
-                        new_shop_review_path(@shop), 
-                        class: 'text-center w-full py-2 px-4 bg-gray-300 text-white rounded hover:bg-gray-400 focus:outline-none active:bg-gray-500', 
-                        data: { turbo_frame: 'review_modal' } %>
-          </div>
+    </div>
+    <!-- レビュー -->
+    <div class="mt-10">
+      <div class="card sm:w-[380px] bg-base-200 shadow-xl rounded p-4 sm:p-6">
+        <p class="text-sm lg:text-xl text-center font-bold">レビュー</p>
+        <div id="reviews">
+          <%= turbo_frame_tag 'review_modal' do %>
+            <%= render @reviews %>
           <% end %>
         </div>
+
+        <% if logged_in? %>
+        <div class="flex justify-end mt-5">
+          <%= link_to 'レビューを書く', 
+                      new_shop_review_path(@shop), 
+                      class: 'text-center w-full py-2 px-4 bg-gray-300 text-white rounded hover:bg-gray-400 focus:outline-none active:bg-gray-500', 
+                      data: { turbo_frame: 'review_modal' } %>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
