@@ -16,28 +16,23 @@ var maxMarkers = 10; // 表示する最大マーカー数
 function initMap() {
     // Google Mapsオブジェクトの作成
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15, // ズームレベル
-        center: new google.maps.LatLng(lat, lng), // 地図の中心
-        mapTypeId: 'roadmap', // 地図のタイプ
-        zoomControl: true, // ズームコントロールを表示
-        streetViewControl: true, // ストリートビューコントロールを表示
-        fullscreenControl: false, // フルスクリーンコントロールを非表示
-        mapTypeControl: false, // 地図タイプコントロールを非表示
-        draggable: true, // 地図をドラッグ可能
-        scrollwheel: true, // スクロールホイールでズーム可能
-        disableDoubleClickZoom: true, // ダブルクリックでズームを無効
-        gestureHandling: 'greedy', // ジェスチャー操作を強制
-        styles: [ // 地図のスタイル設定
+        zoom: 15,
+        center: new google.maps.LatLng(lat, lng),
+        mapTypeId: 'roadmap',
+        zoomControl: true,
+        streetViewControl: true,
+        fullscreenControl: false,
+        mapTypeControl: false,
+        draggable: true,
+        scrollwheel: true,
+        disableDoubleClickZoom: true,
+        gestureHandling: 'greedy',
+        styles: [
+            { featureType: 'all', elementType: 'all' },
             {
-                featureType: 'all',
+                featureType: 'poi',
                 elementType: 'all',
-            },
-            {
-                featureType: 'poi', // ポイントオブインタレスト（店舗など）のスタイル
-                elementType: 'all',
-                stylers: [
-                    { visibility: 'off' }, // 表示をオフにする
-                ],
+                stylers: [{ visibility: 'off' }]
             }
         ]
     });
@@ -45,56 +40,49 @@ function initMap() {
     // ピンの初期化
     pin = new google.maps.Marker({
         map: map,
-        draggable: true, // ドラッグ可能なマーカー
-        position: new google.maps.LatLng(lat, lng), // 初期位置
+        draggable: true,
+        position: new google.maps.LatLng(lat, lng)
     });
 
     // サークルの初期化
     circle = new google.maps.Circle({
         map: map,
-        center: new google.maps.LatLng(lat, lng), // サークルの中心
-        radius: 1000, // サークルの半径（メートル）
-        strokeColor: "#FF0000", // 線の色
-        strokeOpacity: 0.8, // 線の透明度
-        strokeWeight: 2, // 線の太さ
-        fillColor: "#FF0000", // 塗りつぶしの色
-        fillOpacity: 0.35, // 塗りつぶしの透明度
+        center: new google.maps.LatLng(lat, lng),
+        radius: 1000,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35
     });
 
-    // 本屋を検索するボタンのイベントリスナーを追加
+    // イベントリスナーを追加
     document.getElementById('search-books-button').addEventListener('click', function () {
-        currentFilter = 'books'; // フィルターを本屋に設定
-        performSearch(currentFilter); // 検索を実行
+        currentFilter = 'books';
+        performSearch(currentFilter);
     });
 
-    // カフェを検索するボタンのイベントリスナーを追加
     document.getElementById('search-cafe-button').addEventListener('click', function () {
-        currentFilter = 'cafe'; // フィルターをカフェに設定
-        performSearch(currentFilter); // 検索を実行
+        currentFilter = 'cafe';
+        performSearch(currentFilter);
     });
 
-    // 地図をドラッグしたときに検索を更新
     map.addListener('dragend', updateSearch);
-    // ピンをドラッグしたときに検索を更新
     pin.addListener('dragend', updateSearch);
 }
 
 // 検索を更新する関数
 function updateSearch() {
-    // ピンの位置を地図の中心に設定
     pin.setPosition(map.getCenter());
-    // サークルの中心を地図の中心に設定
     circle.setCenter(map.getCenter());
-    // 現在のフィルターで検索を実行
     performSearch(currentFilter);
 }
 
 // 検索を実行する関数
 function performSearch(filterType) {
-    var circleCenter = circle.getCenter(); // サークルの中心
-    var radius = circle.getRadius(); // サークルの半径
+    var circleCenter = circle.getCenter();
+    var radius = circle.getRadius();
 
-    // サークルの北、南、東、西の境界を計算
     var circleBounds = {
         north: circleCenter.lat() + radius / 111111,
         south: circleCenter.lat() - radius / 111111,
@@ -102,91 +90,82 @@ function performSearch(filterType) {
         west: circleCenter.lng() - radius / (111111 * Math.cos(circleCenter.lat() * Math.PI / 180))
     };
 
-    // フィルターに応じたパラメータを設定
-    const filterParam = (filterType === 'cafe') ? 'is_cafe_filter=true' : (filterType === 'books') ? 'is_books_filter=true' : '';
+    const filterParam = (filterType === 'cafe') 
+        ? 'is_cafe_filter=true' 
+        : (filterType === 'books') 
+            ? 'is_books_filter=true' 
+            : '';
 
-    // サーバーからデータを取得
     fetch(`/home.json?north=${circleBounds.north}&south=${circleBounds.south}&east=${circleBounds.east}&west=${circleBounds.west}&${filterParam}`)
         .then(response => response.json())
         .then(data => {
-            clearMarkers(); // 以前のマーカーをクリア
-            updateShopList('books', data.books); // 書店のリストを更新
-            updateShopList('cafes', data.cafes); // カフェのリストを更新
+            clearMarkers();
+            updateShopList('books', data.books);
+            updateShopList('cafes', data.cafes);
         })
-        .catch(error => console.error('Error:', error)); // エラーハンドリング
+        .catch(error => console.error('Error:', error));
 }
 
 // ショップリストを更新する関数
 function updateShopList(type, shops) {
-    const shopsListElement = document.getElementById(`${type}-list`); // リスト要素を取得
-    shopsListElement.innerHTML = ''; // リストをクリア
+    const shopsListElement = document.getElementById(`${type}-list`);
+    shopsListElement.innerHTML = '';
 
-    if (shops && shops.length > 0) { // ショップが存在する場合
-        addMarkers(shops, type); // マーカーを追加
+    if (shops && shops.length > 0) {
+        addMarkers(shops, type);
 
-        // 各ショップの情報をリストに追加
         shops.forEach(shop => {
-            const shop_image = shop.shop_images[0]; // 画像を取得
+            const shop_image = shop.shop_images[0];
+            const shopCard = document.createElement('div');
+            shopCard.className = 'card rounded bg-base-200 border-gray-500 shadow-xl m-2 md:m-3 w-[330px] md:w-[700px] mx-auto';
 
-            const shopCard = document.createElement('div'); // 新しいカードを作成
-            shopCard.className = 'card bg-base-200 border-gray-500 shadow-xl m-5'; // カードのクラスを設定
-
-            // カードの内容を設定
             const cardContent = `
-                <div class="flex rounded">
-                  <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photo_reference=${shop_image.image}&key=${API_KEY}" class="p-5 w-48 h-48 object-cover" style="width: 200px; height: 140px;">
-                  <div class="flex-col">
-                    <ul>
-                      <li class="text-lg mt-4 underline font-bold"><a href="/shops/${shop.id}">${shop.name}</a></li>
-                      <li class="text-base">${shop.address}</li>
-                      <li class="text-xs">${shop.phone_number}</li>
-                    </ul>
-                  </div>
+                <div class="flex" data-controller="modal">
+                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=400&maxwidth=400&photo_reference=${shop_image.image}&key=${API_KEY}" class="p-2 md:p-5 w-24 h-24 md:w-48 md:h-48 rounded">
+                    <div class="flex-col">
+                        <ul>
+                            <li class="text-[9px] font-bold md:pl-4 pt-3 md:text-sm w-full"><a href="/shops/${shop.id}">${shop.name}</a></li>
+                            <li class="text-[7px] pl-1 md:pl-4 mt-1 md:mt-1.5 md:text-xs w-full">${shop.address}</li>
+                            <li class="text-[7px] pl-1 md:pl-4 mt-1 md:mt-1.5 md:text-xs w-full">${shop.phone_number}</li>
+                        </ul>
+                    </div>
                 </div>
             `;
-
-            shopCard.innerHTML = cardContent; // カードに内容を設定
-            shopsListElement.appendChild(shopCard); // リストにカードを追加
+            shopCard.innerHTML = cardContent;
+            shopsListElement.appendChild(shopCard);
         });
-    } else { // ショップが存在しない場合
-        const noShopsElement = document.createElement('p'); // 「ショップがない」メッセージを作成
-        noShopsElement.textContent = '周辺にショップが見つかりませんでした'; // メッセージのテキストを設定
-        noShopsElement.className = 'text-base pt-5 text-center'; // スタイルを設定
-        shopsListElement.appendChild(noShopsElement); // リストにメッセージを追加
+    } else {
+        const noShopsElement = document.createElement('p');
+        noShopsElement.textContent = '周辺にショップが見つかりませんでした';
+        noShopsElement.className = 'text-base pt-5 text-center';
+        shopsListElement.appendChild(noShopsElement);
     }
 }
 
 // マーカーを追加する関数
 function addMarkers(shops, type) {
-  // タイプに応じたマーカー配列を選択
-  const markers = (type === 'books') ? booksMarker : cafesMarker;
+    const markers = (type === 'books') ? booksMarker : cafesMarker;
 
-  // ショップの数だけマーカーを追加
-  for (var i = 0; i < shops.length && i < maxMarkers; i++) {
-      var markerIcon = {
-          url: '/images/' + type.toLowerCase() + '_' + (i + 1) + '.png', // アイコンのパスを設定
-          scaledSize: new google.maps.Size(70, 70) // アイコンのサイズを指定
-      };
+    for (var i = 0; i < shops.length && i < maxMarkers; i++) {
+        var markerIcon = {
+            url: '/images/' + type.toLowerCase() + '_' + (i + 1) + '.png',
+            scaledSize: new google.maps.Size(70, 70)
+        };
 
-      // マーカーを作成
-      var marker = new google.maps.Marker({
-          map: map, // マップに追加
-          position: new google.maps.LatLng(shops[i].latitude, shops[i].longitude), // マーカーの位置
-          icon: markerIcon // マーカーのアイコン
-      });
+        var marker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(shops[i].latitude, shops[i].longitude),
+            icon: markerIcon
+        });
 
-      markers.push(marker); // マーカーを配列に追加
-  }
+        markers.push(marker);
+    }
 }
-
 
 // 以前のマーカーをクリアする関数
 function clearMarkers() {
-    // 本屋のマーカーを地図から削除
     booksMarker.forEach(marker => marker.setMap(null));
-    // カフェのマーカーを地図から削除
     cafesMarker.forEach(marker => marker.setMap(null));
-    // マーカーの配列を空にする
     booksMarker = [];
     cafesMarker = [];
 }

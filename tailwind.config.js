@@ -1,3 +1,4 @@
+// tailwind.config.js
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
@@ -8,5 +9,12 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     darkTheme: false, // ダークモードをONにする場合は削除
+  },
+  theme: {
+    extend: {
+      fontSize: {
+        xs: '10px', // xsサイズを10pxに変更
+      },
+    },
   },
 }
