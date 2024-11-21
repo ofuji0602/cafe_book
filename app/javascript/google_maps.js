@@ -56,6 +56,32 @@ function initMap() {
         fillOpacity: 0.35
     });
 
+    // 現在地移動ボタンを追加
+    var currentLocationButton = document.createElement('button');
+    currentLocationButton.textContent = "現在地へ移動";
+    currentLocationButton.className = "border-2 rounded-full border-gray-300 bg-gray-300 py-2 px-4 md:px-8 mt-2 mr-2 text-center text-xs md:text-base text-white font-bold hover:bg-gray-400 active:bg-gray-500";
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(currentLocationButton);
+
+    // 現在地移動ボタンのクリックイベント
+    currentLocationButton.addEventListener('click', function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    lat = position.coords.latitude;
+                    lng = position.coords.longitude;
+                    pin.setPosition(new google.maps.LatLng(lat, lng));
+                    circle.setCenter(new google.maps.LatLng(lat, lng));
+                    map.setCenter(new google.maps.LatLng(lat, lng));
+                },
+                () => {
+                    handleLocationError(true, map.getCenter());
+                }
+            );
+        } else {
+            handleLocationError(false, map.getCenter());
+        }
+    });
+
     // イベントリスナーを追加
     document.getElementById('search-books-button').addEventListener('click', function () {
         currentFilter = 'books';
@@ -90,10 +116,10 @@ function performSearch(filterType) {
         west: circleCenter.lng() - radius / (111111 * Math.cos(circleCenter.lat() * Math.PI / 180))
     };
 
-    const filterParam = (filterType === 'cafe') 
-        ? 'is_cafe_filter=true' 
-        : (filterType === 'books') 
-            ? 'is_books_filter=true' 
+    const filterParam = (filterType === 'cafe')
+        ? 'is_cafe_filter=true'
+        : (filterType === 'books')
+            ? 'is_books_filter=true'
             : '';
 
     fetch(`/home.json?north=${circleBounds.north}&south=${circleBounds.south}&east=${circleBounds.east}&west=${circleBounds.west}&${filterParam}`)
