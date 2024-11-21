@@ -53,7 +53,7 @@ gem "carrierwave"
 
 gem "mini_magick"
 
-gem "rails-i18n", "~> 7.0.0"
+gem "rails-i18n", "~> 7.0.10"
 
 gem "rails_admin"
 
